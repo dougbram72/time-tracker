@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Test</title>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div x-data="timerTest()" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-bold mb-4">Timer Test</h2>
+        
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-2">Type:</label>
+            <select x-model="newTimer.trackable_type" class="w-full border rounded px-3 py-2">
+                <option value="">Select type...</option>
+                <option value="App\\Models\\Project">Project</option>
+                <option value="App\\Models\\Issue">Issue</option>
+            </select>
+        </div>
+        
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-2">ID:</label>
+            <input type="text" x-model="newTimer.trackable_id" class="w-full border rounded px-3 py-2" placeholder="Enter ID">
+        </div>
+        
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-2">Description:</label>
+            <input type="text" x-model="newTimer.description" class="w-full border rounded px-3 py-2" placeholder="Optional description">
+        </div>
+        
+        <button @click="testValidation()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Test Validation
+        </button>
+        
+        <div x-show="error" class="mt-4 p-3 bg-red-100 text-red-700 rounded" x-text="error"></div>
+        <div x-show="success" class="mt-4 p-3 bg-green-100 text-green-700 rounded" x-text="success"></div>
+        
+        <div class="mt-4 text-sm text-gray-600">
+            <p><strong>Current values:</strong></p>
+            <p>Type: <span x-text="newTimer.trackable_type || 'empty'"></span></p>
+            <p>ID: <span x-text="newTimer.trackable_id || 'empty'"></span></p>
+            <p>Description: <span x-text="newTimer.description || 'empty'"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function timerTest() {
+            return {
+                newTimer: {
+                    trackable_type: '',
+                    trackable_id: '',
+                    description: ''
+                },
+                error: '',
+                success: '',
+                
+                testValidation() {
+                    this.error = '';
+                    this.success = '';
+                    
+                    // Same validation logic as in the timer store
+                    if (!this.newTimer.trackable_type) {
+                        this.error = 'Please select whether you\'re working on a Project or Issue';
+                        return;
+                    }
+                    
+                    if (!this.newTimer.trackable_id || this.newTimer.trackable_id === '' || this.newTimer.trackable_id === null) {
+                        const itemType = this.newTimer.trackable_type === 'App\\Models\\Project' ? 'project' : 'issue';
+                        this.error = `Please select a ${itemType}`;
+                        return;
+                    }
+                    
+                    this.success = 'Validation passed! Timer would start with: ' + JSON.stringify(this.newTimer);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
