@@ -1,61 +1,214 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Time Tracker
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+⏱️ A comprehensive time tracking application built with Laravel for developers and professionals who need to track time across multiple projects and customer issues.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Core Timer Functionality
+- **Start/Stop/Pause/Resume** timers with accurate time tracking
+- **Single Active Timer** constraint - starting a new timer automatically stops the previous one
+- **Real-time Updates** - elapsed time updates every second for running timers
+- **Local Storage Persistence** - timer state persists across browser sessions
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Project & Issue Management
+- **Hierarchical Organization** - track time on Projects and Issues within projects
+- **Visual Indicators** - project colors and issue priorities for quick identification
+- **Flexible Tracking** - timer can track either projects directly or specific issues
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Mobile-First Design
+- **Responsive UI** - optimized for both mobile and desktop use
+- **Touch Optimizations** - 44px minimum touch targets, swipe gestures
+- **Progressive Web App** features for native-like mobile experience
+- **Haptic Feedback** simulation for better touch interaction
 
-## Learning Laravel
+### Advanced Features
+- **Real-time Synchronization** - timer state syncs across browser tabs and sessions
+- **Offline Capability** - works offline with automatic sync when connection restored
+- **Error Recovery** - comprehensive error handling with automatic recovery
+- **Timer Drift Detection** - automatically corrects timer drift for accuracy
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Technical Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Backend**: Laravel 12 with Eloquent ORM
+- **Frontend**: Alpine.js for reactive components
+- **Styling**: Tailwind CSS for responsive design
+- **Database**: SQLite (development) / MySQL/PostgreSQL (production)
+- **Authentication**: Laravel Sanctum for API security
+- **Testing**: Pest PHP with comprehensive test coverage
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📱 User Experience
 
-## Laravel Sponsors
+### Mobile Touch Optimizations
+- **Swipe Gestures**: 
+  - Swipe down to minimize widget
+  - Swipe right to show recent entries
+  - Swipe left to hide recent entries
+  - Swipe down on modal to dismiss
+- **Long Press Actions**:
+  - Long press timer display for emergency reset
+  - Long press start button for quick start with last settings
+- **Touch Feedback**: Visual and haptic feedback for all interactions
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Desktop Experience
+- **Floating Timer Widget** - unobtrusive timer display
+- **Keyboard Shortcuts** - efficient timer control
+- **Multi-tab Synchronization** - consistent state across browser tabs
 
-### Premium Partners
+## 🧪 Testing
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Comprehensive test suite with **88 tests** and **527 assertions**:
 
-## Contributing
+- **Unit Tests** - Model logic and business rules
+- **Feature Tests** - API endpoints and controller logic
+- **Integration Tests** - Complete workflow testing
+- **Browser Tests** - UI component and interaction testing
+- **Error Handling Tests** - Recovery and resilience testing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Quick Start
 
-## Code of Conduct
+### Prerequisites
+- PHP 8.2+
+- Composer
+- Node.js & NPM
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Installation
 
-## Security Vulnerabilities
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/dougbram72/time-tracker.git
+   cd time-tracker
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-## License
+3. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4. **Database setup**
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
+
+5. **Build assets**
+   ```bash
+   npm run build
+   ```
+
+6. **Start the application**
+   ```bash
+   php artisan serve
+   ```
+
+7. **Access the application**
+   - Open http://localhost:8000
+   - Click "Demo Login" to try the application
+   - Default demo user: test@example.com
+
+## 📖 Usage
+
+### Starting a Timer
+1. Click the "Start Timer" button
+2. Select either a Project or Issue to track time against
+3. Choose from your available projects/issues
+4. Click "Start" to begin tracking
+
+### Managing Timers
+- **Pause**: Click pause button to temporarily stop the timer
+- **Resume**: Click resume to continue a paused timer
+- **Stop**: Click stop to end the timer and create a time entry
+- **Switch**: Starting a new timer automatically stops the current one
+
+### Mobile Usage
+- Use swipe gestures for quick navigation
+- Long press for advanced actions
+- Widget automatically adapts to mobile screen sizes
+
+## 🏗️ Architecture
+
+### Database Schema
+- **Users** - Application users
+- **Projects** - Top-level work containers
+- **Issues** - Specific tasks within projects
+- **Timers** - Active timing sessions
+- **TimeEntries** - Completed time records
+
+### API Endpoints
+- `GET /api/timers/active` - Get current active timer
+- `POST /api/timers/start` - Start new timer
+- `POST /api/timers/pause` - Pause active timer
+- `POST /api/timers/resume` - Resume paused timer
+- `POST /api/timers/stop` - Stop timer and create entry
+- `POST /api/timers/sync` - Synchronize timer state
+
+### Frontend Architecture
+- **Alpine.js Store** - Centralized state management
+- **Blade Components** - Reusable UI components
+- **Tailwind CSS** - Utility-first styling
+- **Local Storage** - Client-side persistence
+
+## 🧪 Running Tests
+
+```bash
+# Run all tests
+php artisan test
+
+# Run specific test suites
+php artisan test --testsuite=Unit
+php artisan test --testsuite=Feature
+
+# Run with coverage
+php artisan test --coverage
+```
+
+## 🚀 Deployment
+
+The application is production-ready with:
+- Environment-based configuration
+- Database migrations
+- Asset compilation
+- Comprehensive error handling
+- Security best practices
+
+### Production Checklist
+- [ ] Set `APP_ENV=production`
+- [ ] Configure database connection
+- [ ] Set up proper web server (Apache/Nginx)
+- [ ] Configure SSL certificate
+- [ ] Set up backup strategy
+- [ ] Configure monitoring
+
+## 📋 Product Documentation
+
+Comprehensive product planning documentation available in `.agent-os/`:
+- **Product Overview** - Vision, users, and use cases
+- **Architecture Decisions** - Technical choices and rationale
+- **Feature Specifications** - Detailed requirements and designs
+- **Development Roadmap** - Planned features and timeline
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with tests
+4. Submit a pull request
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 👨‍💻 Author
+
+Built by Doug Brammer for efficient time tracking across development projects and customer support tasks.
+
+---
+
+**Ready to track your time efficiently? Get started with the demo and see how this application can streamline your workflow!**
